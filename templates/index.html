@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+
+        var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
+
+        socket.on("connect", () => {
+
+          document.querySelector("#button").onclick = () => {
+            const msg = document.querySelector("#message").value;
+            socket.emit("msg sent", {"message": msg});
+          };
+        });
+
+      socket.on("msg recieve", (msg) => {
+        const li = document.createElement("li");
+        li.innerHTML = msg.message;
+        document.querySelector("#messages").append(li);
+      });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="text" id="message">
+    <button id="button">Submit</button>
+    <ul id="messages">
+    </ul>
+  </body>
+</html>
