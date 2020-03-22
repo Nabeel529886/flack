@@ -10,6 +10,10 @@ socketio = SocketIO(app)
 def index():
     return render_template("index.html")
 
+@socketio.on("connect")
+def type():
+    emit("type msg", {"data": "Connected"}, broadcast=True)
+
 @socketio.on("msg sent")
 def recieve(msg):
     message = msg["message"]
