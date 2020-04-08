@@ -8,7 +8,7 @@ from models import *
 from flask_socketio import SocketIO, send, join_room, leave_room
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.urandom(14)
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
