@@ -1,0 +1,30 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+
+{% block content %}
+  <h1 class="display-4 text-center container-fluid" style="background: linear-gradient(to left, lightblue, blue, darkblue, lightblue); color: white; padding-top: 15px; padding-bottom:20px;">FLACK CHAT</h1>
+<div class="container mt-5">
+  <h1 style="color: darkblue;">Login</h1><hr>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+    <p class="alert alert-{{ category }}">{{ message }}</p>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+  <form method="post">
+    {{ form.hidden_tag() }}
+    {{ wtf.form_field(form.username, placeholder="Username") }}
+    {{ wtf.form_field(form.password, placeholder="Password") }}
+
+    <button class="btn btn-primary" style="background-color: darkblue; border-color: darkblue;">Submit</button>
+
+    <p class="text-muted" style="margin-top:10px;">Need An Account? <a href="{{ url_for('register') }}">Register Now!</a></p>
+  </form>
+</div>
+{% endblock %}

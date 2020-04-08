@@ -1,0 +1,70 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+  Chat
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="/static/css/chat.css">
+
+    <div class="container-fluid">
+    <div class="wrapper">
+      <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background: linear-gradient(to left, lightblue, blue, darkblue, lightblue); margin: 0;">
+
+          <div class="container-fluid">
+              <div id="show-sidebar-button" class="cursor-pointer">
+                  <i class="fas fa-plus-circle "></i>
+                  <span>Rooms</span>
+              </div>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a id="logout-btn" class="nav-link" href="{{ url_for('logout') }}"><span style="color: #335177">Logout</span></a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+
+      <div id="main-section">
+        <div class="row">
+          <div class="col-lg-2">
+            <div id="channel-section">
+              <nav id="sidebar">
+                  <h3>Rooms</h3>
+                  {% for room in rooms %}
+                      <p id="{{ room }}" class="select-room cursor-pointer" style="padding: 10px; padding-left:20px;">{{ room }}</p><hr>
+                  {% endfor %}
+              </nav>
+            </div>
+          </div>
+          <div class="col-lg-10 ">
+            <div id="message-section">
+              <div id="display-message-section">
+
+              </div>
+              <div id="type-message-section">
+                  <input type="text" id="message" placeholder="Enter Your Message" style="padding: 3px;">
+                  <button type="button" id="submit" class="btn btn-success">SEND <i class="fas fa-paper-plane"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      </div>
+    </div>
+      <span id="get_username">{{ current_user.username }}</span>
+
+
+      <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+      <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+      <script charset="utf-8" src="/static/js/chat.js"></script>
+
+{% endblock %}
