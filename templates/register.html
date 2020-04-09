@@ -22,10 +22,16 @@
     <form method="post">
       {{ form.hidden_tag() }}
       {{ wtf.form_field(form.username, placeholder="Username") }}
+      {% if form.username.errors %}
+        {% for error in form.username.errors %}<small class="alert alert-danger mb-4" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small><br>{% endfor %}
+      {% endif %}
       {{ wtf.form_field(form.name, placeholder="Name") }}
+      {% if form.name.errors %}
+        {% for error in form.name.errors %}<small class="alert alert-danger mb-4" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small><br>{% endfor %}
+      {% endif %}
       {{ wtf.form_field(form.password, placeholder="Password") }}
         {% if form.password.errors %}
-          {% for error in form.password.errors %}<small class="alert alert-danger mb-4" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small>{% endfor %}
+          {% for error in form.password.errors %}<small class="alert alert-danger mb-4" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small><br>{% endfor %}
         {% endif %}
 
       {{ wtf.form_field(form.confirm, placeholder="Confirm Password") }}
