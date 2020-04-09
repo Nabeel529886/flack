@@ -37,7 +37,6 @@ def login():
         if user:
             if sha256_crypt.verify(form.password.data, user.password):
                 login_user(user)
-                flash("Successfully Logged In", "success")
                 return redirect(url_for("chat"))
             else:
                 flash("Incorrect username or Password", "danger")
