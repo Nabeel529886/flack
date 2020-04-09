@@ -20,7 +20,13 @@
   <form method="post">
     {{ form.hidden_tag() }}
     {{ wtf.form_field(form.username, placeholder="Username") }}
+    {% if form.username.errors %}
+      {% for error in form.username.errors %}<small class="alert alert-danger" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small><br>{% endfor %}
+    {% endif %}
     {{ wtf.form_field(form.password, placeholder="Password") }}
+    {% if form.password.errors %}
+      {% for error in form.password.errors %}<small class="alert alert-danger" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small><br>{% endfor %}
+    {% endif %}
 
     <button class="btn btn-primary" style="background-color: darkblue; border-color: darkblue;">Submit</button>
 

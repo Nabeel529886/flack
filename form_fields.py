@@ -10,5 +10,5 @@ class RegisterForm(FlaskForm):
     confirm = PasswordField("Confirm Password")
 
 class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[InputRequired(message="Username Required"), Length(min=4, max=15, message="username should 4 to 15 characters long")])
+    username = StringField('Username', validators=[InputRequired(message="Username Required"), Length(min=4, max=15, message="Incorrect Username")])
     password = PasswordField("Password", validators=[InputRequired(message="Password Required"), Length(min=8, max=80)])
