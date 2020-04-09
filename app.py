@@ -49,6 +49,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash("Logged out Successfully", "success")
     return redirect(url_for("login"))
 
 @app.route("/register", methods=["GET", "POST"])
@@ -98,8 +99,6 @@ def leave(data):
     room = data['room']
     leave_room(room)
     send({"msg": username + " has left the room"}, room=room)
-
-
 
 
 if __name__ == "__main__":
