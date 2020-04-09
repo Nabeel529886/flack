@@ -25,7 +25,7 @@
       {{ wtf.form_field(form.name, placeholder="Name") }}
       {{ wtf.form_field(form.password, placeholder="Password") }}
         {% if form.password.errors %}
-          {% for error in form.password.errors %}<small class="alert alert-danger">{{ error }}</small>{% endfor %}
+          {% for error in form.password.errors %}<small class="alert alert-danger" style="padding-top: 2px; padding-bottom: 2px;">{{ error }}</small>{% endfor %}
         {% endif %}
 
       {{ wtf.form_field(form.confirm, placeholder="Confirm Password") }}
