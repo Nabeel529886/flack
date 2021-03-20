@@ -23,7 +23,7 @@ idna==2.9
 imageio==2.6.1
 imutils==0.5.3
 itsdangerous==1.1.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 Keras==2.3.1
 Keras-Applications==1.0.8
 Keras-Preprocessing==1.1.0
